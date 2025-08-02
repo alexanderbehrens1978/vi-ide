@@ -1,0 +1,85 @@
+# Grundlegende Bedienung von vim
+
+# Datei öffnen (ohne Tabs) :e /path/to/file
+# Datei speichern :w
+# Datei schließen :q und wenn du nicht vorher speichern möchtest :q!
+# Hilfe anschauen :help Befehl
+
+# Eingebauter Dateiexplorer
+# 
+# Vim hat einen eigenen grafischen Dateiexplorer. Diesen kann man mit :Explore (man achte auf das große E) - oder kurz :Ex
+# - öffnen und darin navigieren. Entweder man wählt dann eine Datei, die geöffnet wird oder man schließt ihn mit :q
+
+# ein paar weitere Arten von :Explore
+# :Sexplore/:Sex Teilte den Bildschirm horizontal
+# :Lexplore/:Lex Teilt vertikal und zeigt den Explorer links an
+# :Texplore/:Tex Erstellt einen neuen Tab in dem die Datei geöffnet wird
+
+# Tabs
+# Auch Tabs bringt vim bereits mit:
+#
+# :tabnew öffnen einen neuen Tab
+# :tabfind /path/to/file öffnet die angegebene Datei in einem neuen Tab
+# :tabclose schließt den Tab
+#
+# Mit STRG+Bild-rauf und STRG+Bild-runter kann man zwischen den Tabs navigieren.
+#
+#
+# Fenster splitten
+# 
+# Vim bietet eine Möglichkeit den Bildschirm mit :split/:sp horizontal und mit :vsplit/:vs vertikal zu
+# teilen. Die geöffnete Datei wird dann zwei mal dargestellt.
+#
+# Mit STRG+W STRG+W kann man zwischen den Teilen springen (vim geht die dann der Reihe nach durch).
+# 
+# In Kombination mit Tabs ist dann die aktuelle Tab-Seite geteilt. Andere Tabs sind nicht geteilt.
+#
+# Suchen und Ersetzen
+# Unter Linux ist das Schema /Suchbegriff sehr weit verbreitet (z.B. im pager less). Einfach im Normal-Mode drauf los tippen und
+# mit Enter die Suche starten. Dadurch springt Vim zum ersten Ergebnis und man kann mit n zum nächsten, bzw. mit N zum vorherigen
+# Ergebnis springen.
+#
+# Ersetzen geht nach einem vergleichbaren Schema vor:
+#
+# :s/alt/neu ersetzt das erste "alt" in der aktuellen Zeile durch ein "neu"
+# :s/alt/neu/g ersetzt jedes "alt" in der aktuellen Zeile durch ein "neu"
+# :%s/alt/neu/g ersetzt jedes "alt" in der Datei durch ein "neu"
+# :%s/alt/neu/gc ersetzt jedes "alt" in der Datei durch ein "neu", fragt aber bei jedem Vorkommnis nach
+#
+# Springen
+# Neben dem klassischen Suchen gibt es leichtgewichtige Varianten zum Finden von gewissen
+# Vorkommnissen oder Stellen in der Datei:
+#
+# * nimmt das Wort unterm Cursor und springt zum nächsten Vorkommnis
+# # nimmt das Wort unterm Cursor und springt zum vorherigen Vorkommnis
+# gD nimmt das Wort unterm Cursor und springt zum ersten Vorkommnis in der Datei
+#    (merke: gD = goto Definition)
+# gg springt zum Dateianfang oder 1G
+# G springt zum Dateiende
+# $ springt zum Zeilenende
+# ^/_ springt zum ersten Zeichen in der Zeile, was kein Leerzeichen ist --> zweimal die Taste links neben der 1 drücken
+# 0 springt zum absoluten Zeilenanfang
+#
+# Bauen, ausführen und Debuggen
+# Man kann aus vim heraus Bash-Befehle ausführen und somit z.B. die Anwendung bauen und ausführen.
+# Zum bauen kann man z.B. make starten, was dann so aussieht:  :!make
+# das ! bringt vim dazu den nächsten Befehl als externes Programm in einer neuen Bash zu starten.
+#
+# Angenommen aus make purzelt die Datei main heraus, dann kann man mit :!make && ./main direkt
+# bauen und starten. Es öffnet sich dabei eine Bash in der das alles ausgeführt wird. Neben make kann man
+# eben auch gdb starten. Dazu entsprechend :!gdb eingeben und fertig.
+#
+# Man sollte vorher speichern und kann das dann z.B. make und gdb verbinden  :w | !make && gdb
+# die Pipe (also |) verbindet zwei Befehle (wie && in der shell).
+#
+# Zuletzt vereinfacht ein Shortcut das ganze noch weiter, so kann ein entsprechender .vimrc-Eintrag so
+# aussehen: nmap <C-D> :w <bar> !make all && gdb<cr>
+# Dadurch kann man dann mit CTRL+D im Normal-Mode speichern, make aufrufen und danach direkt zu gdb springen.
+#
+# Tipp:
+# Mit dem Terminal-Multiplexer screen kann man dann vim und gdb in einem Terminalfenster direkt nebeneinander
+# auf haben. Praktisch, wenn man rein im Terminal entwickelt.
+#
+# https://curi0sity.de/2018/06/vim-als-einfache-ide-nutzen/
+
+
