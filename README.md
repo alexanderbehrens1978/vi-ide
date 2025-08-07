@@ -13,3 +13,4 @@ sudo apt install python3.12-venv
 python3 -m venv venv
 source venv/bin/activate
 pip install pandas
+sudo apt install tmux screen bpytop
